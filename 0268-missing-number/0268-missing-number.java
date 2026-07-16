@@ -1,24 +1,10 @@
 class Solution {
+  public int missingNumber(int[] nums) {
+    int sum = 0,n=nums.length;
+    for(int i : nums) sum+=i;
 
-  public int missingNumber(int[] arr) {
-    int i = 0;
-    while (i < arr.length) {
-      int correct = arr[i];
-      if (arr[i] < arr.length && arr[i] != arr[correct])
-        swap(arr, i, correct);
-      else
-        i++;
-    }
+    int actualSum = (n*(n+1))/2;
 
-    for(int j = 0;j<arr.length;j++){
-      if(j!=arr[j]) return j;
-    }
-    return arr.length;
-  }
-
-  static void swap(int[] arr, int first, int second) {
-    int temp = arr[first];
-    arr[first] = arr[second];
-    arr[second] = temp;
+    return actualSum - sum;
   }
 }
